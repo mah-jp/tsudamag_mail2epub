@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>津田さんメルマガ→ePub変換ウェブサービス #mail2epub (メールマガジン『津田大介の「メディアの現場」』購読者向け)</title>
+<link rel="stylesheet" href="mail2epub.css"type="text/css" media="screen" />
+<link rel="shortcut icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+<link rel="icon" href="/favicon.ico" type="image/vnd.microsoft.icon" />
+<script type="text/javascript">
+/* document.write('<style type="text/css">.tabber{display:none;}<\/style>'); */
+var tabberOptions = {
+	'cookie':"tabber",
+	'onLoad': function(argsObj)
+	{
+		var t = argsObj.tabber;
+		var i;
+		if (t.id) {
+			t.cookie = t.id + t.cookie;
+	}
+	i = parseInt(getCookie(t.cookie));
+	if (isNaN(i)) { return; }
+		t.tabShow(i);
+	},
+	'onClick':function(argsObj)
+	{
+		var c = argsObj.tabber.cookie;
+		var i = argsObj.index;
+		setCookie(c, i);
+	}
+};
+function setCookie(name, value, expires, path, domain, secure) {
+	document.cookie= name + "=" + escape(value) +
+		((expires) ? "; expires=" + expires.toGMTString() : "") +
+		((path) ? "; path=" + path : "") +
+		((domain) ? "; domain=" + domain : "") +
+		((secure) ? "; secure" : "");
+}
+function getCookie(name) {
+	var dc = document.cookie;
+	var prefix = name + "=";
+	var begin = dc.indexOf("; " + prefix);
+	if (begin == -1) {
+		begin = dc.indexOf(prefix);
+		if (begin != 0) return null;
+	} else {
+		begin += 2;
+	}
+	var end = document.cookie.indexOf(";", begin);
+	if (end == -1) {
+		end = dc.length;
+	}
+	return unescape(dc.substring(begin + prefix.length, end));
+}
+function deleteCookie(name, path, domain) {
+	if (getCookie(name)) {
+		document.cookie = name + "=" +
+			((path) ? "; path=" + path : "") +
+			((domain) ? "; domain=" + domain : "") +
+			"; expires=Thu, 01-Jan-70 00:00:01 GMT";
+	}
+}
+/* var tabberOptions = {manualStartup:true}; */
+</script>
+<script type="text/javascript" src="tabber-minimized.js"></script>
+</head>
+
+<body>
+
+<div class="socialbar">
+	<ul>
+		<li>by <a href="http://twitter.com/mah_jp">@mah_jp</a></li>
+	</ul>
+</div>
+<h1>津田さんメルマガ→ePub変換ウェブサービス</h1>
+<div class="socialbar">
+	<ul>
+		<li><a href="http://b.hatena.ne.jp/entry/http://remoteroom.jp/mail2epub/" class="hatena-bookmark-button" data-hatena-bookmark-title="津田さんメルマガ→ePub変換ウェブサービス #mail2epub (メールマガジン『津田大介の「メディアの現場」』購読者向け)" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button_wo_al.js" charset="utf-8" async="async"></script></li>
+		<li><a href="https://twitter.com/share" class="twitter-share-button" data-text="津田さんメルマガ→ePub変換ウェブサービス #mail2epub" data-count="horizontal"></a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script></li>
+	</ul>
+</div>
+
+<div class="tabber" id="tabber_main"><!-- tabber_main -->
+
+<div class="tabbertab">
+	<h2>これは？</h2>
+	<p>このサービスは，津田大介氏 (<a href="http://twitter.com/tsuda">@tsuda</a>) の<a href="http://www.neo-logue.com/mailmag/">メールマガジン『津田大介の「メディアの現場」』</a>を購読している方向けの，「津田さんメルマガ→ePub変換ウェブサービス」です。作者個人が2011年10月22日から運用しています。公開については，メルマガ発行責任者の津田さんから許諾をいただきました。(なお，2011年11月5日より，メルマガ配信本家の<a href="http://yakan-hiko.com/tsuda.html">夜間飛行</a>と<a href="http://www.mag2.com/m/0001334191.html">まぐまぐ</a>において，公式のePub配信が始まっています)</p>
+	<dl class="information">
+		<dt>最近の更新内容</dt>
+			<dd>
+				<ul>
+					<li>津田さんメルマガvol.29のEPUB変換に問題がないことを確認しました。 [2012/04/17]</li>
+					<li>津田さんメルマガ東北取材特別増刊号その4に仮対応しました。 [2012/04/04]</li>
+				</ul>
+			</dd>
+		<dt>他のテキスト・コンテンツ，プレーンテキストをEPUB変換したい</dt>
+			<dd>
+				<p>より汎用的な、テキストのEPUB変換サービスを別途立ち上げています。『<a href="http://genepub.com">GenEPUB.com テキストから電子書籍EPUBを生成する変換サービス #GenEPUB</a>』をどうぞお試しください。</p>
+			</dd>
+	</dl>
+	<div class="tabber" id="tabber_whatis">
+		<div class="tabbertab">
+			<h3>使い方・動画</h3>
+			<p>パソコンやスマートフォンにて，メルマガ購読者に届くメールの本文テキストすべてをコピーして，本サービスの入力フォームに貼り付け，送信ボタンを押してください。その数秒後に，メルマガのePubファイル (電子書籍フォーマットの一種) がお手元にダウンロードされます。ご利用は上の「★変換する」タブからどうぞ。</p>
+			<dl>
+				<dt>本サービスで生成するePubファイルの特徴 (公式ePubと比較した場合)</dt>
+					<dd>
+						<ul>
+							<li>簡易的なSocialReading機能を実装。メルマガの各章に用意される専用リンクを押すだけで，Twitterへハッシュタグ <a href="http://twitter.com/#!/search?q=%23tsudamag">#tsudamag</a> を付けた状態でアクセスします。読書状況や感想をTwitterで簡単に共有できます。[ver.20111111]</li>
+							<li>独自の表紙を追加。表紙は簡素なデザインで号によって色彩を変化させており，メルマガのePubファイルを本棚に並べた様子は，次のようにシリーズが分かりやすいものになります。→<a href="http://www.flickr.com/photos/mah_japan/6326115527">iBooksの本棚 (iOS 4)</a>, <a href="http://www.flickr.com/photos/mah_japan/6326110923">Aldikoの本棚 (Android)</a> [ver.20111109]</li>
+						</ul>
+					</dd>
+			</dl>
+			<p>メルマガを購読していない方は，ウェブで一般公開されている「vol.0 創刊準備号」 (<a href="http://yakan-hiko.com/tsuda.html">夜間飛行での [無料サンプル]</a>，<a href="http://www.mag2.com/m/0001334191.html">まぐまぐでの [サンプル]</a>) の本文テキストをコピーして，本サービスでのePub変換を試すことができます。</p>
+			<iframe width="560" height="315" src="http://www.youtube.com/embed/dFsZw4AmZAc?wmode=transparent" frameborder="0" wmode="Opaque" allowfullscreen class="youtube"></iframe>
+			<p><a href="http://www.youtube.com/watch?v=dFsZw4AmZAc">このYouTube動画</a>は，本サービスを使ってePubファイルを作り，それをiPadで閲覧する方法を，津田さんご自身が実演して解説しているものです。</p>
+		</div>
+		<div class="tabbertab">
+			<h3>ePub変換のメリット</h3>
+			<p>有料メールマガジン『津田大介の「メディアの現場」』は，質と量の両面で非常に読み応えがあり，文量は2,000行を超えるほどです。これを読み通すのに，通常のメールソフトの画面はあまり適していません。</p>
+			<p>一方，iBooksなどの「電子書籍リーダ」アプリ・ソフトは，電子書籍を効率よく便利に読み進めるためにあるソフトウェアです。フォントの調節機能・目次機能・しおり機能など，読者にとって嬉しい機能が多く搭載されています。その点に着目し，「津田さんメルマガの長文を電子書籍リーダで読んだら快適なのでは？」と考え，本サービスを作りました。前身はスクリプト版の <a href="http://remoteroom.jp/dokuwiki/%E5%AE%9F%E7%94%A8%E3%81%99%E3%81%8F%E3%82%8A%E3%81%B7%E3%81%A8%E3%82%93:mail2epub.pl">mail2epub.pl (Perl Script &amp; EXE)</a> です。</p>
+			<p>本サービスでは，メルマガの本文テキストに対して次の処理を自動的に行なって，ePubファイルを生成し，ダウンロードできるようにしています。</p>
+			<ol>
+				<li>メルマガ本文の整形のための改行をできるだけ削除 → 電子書籍リーダの画面 (reflow型) でメルマガが読み易くなります☺</li>
+				<li>メルマガの章立てを解析して，ePubに目次を自動付加 → 電子書籍リーダで目次機能が使えて各章にジャンプできます☺</li>
+				<li>メルマガ本文中のendnote (後注) の「印」と「内容」を相互リンク化 → endnoteの参照がラクになります☺</li>
+				<li>メルマガ本文中のURLとメールアドレス，そしてTwitterアカウントの文字列をリンク化 → 気になるTwitterやウェブリソースの参照が簡単です☺</li>
+				<li>簡易的ですが，メルマガの各章にSocialReading用のTweetリンクを追加 → 他の読者と，読書の状況や感想をゆるく共有できます☺</li>
+			</ol>
+		</div>
+	</div>
+</div>
+
+<div class="tabbertab">
+	<h2>★変換する</h2>
+	<form name="mailinput" method="post" action="/cgi-bin/mail2epub/mail2epub.cgi" target="_self">
+	<div class="tabber" id="tabber_convert">
+		<div class="tabbertab">
+			<h3>Step 1: 貼付</h3>
+			<p>Step 1-1: 津田さんメルマガの，ひとつの号の本文テキストすべて (分割配信された号ではメール「part 1」の本文テキストすべて) を，下のテキストエリアに貼り付けます。</p>
+			<textarea name="body_1" cols="76" rows="6" class="part1"></textarea>
+			<p>Step 1-2: 分割配信された号では，メール「part 2」の本文テキストすべてを，下のテキストエリアに貼り付けます (part 2のない号では空欄のまま)。</p>
+			<textarea name="body_2" cols="76" rows="6" class="part2"></textarea>
+			<p>Step 1-3: 同様に，メール「part 3」の本文テキストすべてを，下のテキストエリアに貼り付けます (part 3のない号では空欄のまま)。</p>
+			<textarea name="body_3" cols="76" rows="6" class="part3"></textarea>
+			<p>Step 1-4: 同様に，メール「part 4」の本文テキストすべてを，下のテキストエリアに貼り付けます (part 4のない号では空欄のまま)。</p>
+			<textarea name="body_4" cols="76" rows="6" class="part4"></textarea>
+			<p>Step 1-5: 同様に，メール「part 5」の本文テキストすべてを，下のテキストエリアに貼り付けます (part 5のない号では空欄のまま)。</p>
+			<textarea name="body_5" cols="76" rows="6" class="part5"></textarea>
+			<p>Step 1-6: 同様に，メール「part 6」の本文テキストすべてを，下のテキストエリアに貼り付けます (part 6のない号では空欄のまま)。</p>
+			<textarea name="body_6" cols="76" rows="6" class="part6"></textarea>
+			<p>Step 1-7: 同様に，メール「part 7」の本文テキストすべてを，下のテキストエリアに貼り付けます (part 7のない号では空欄のまま)。</p>
+			<textarea name="body_7" cols="76" rows="6" class="part7"></textarea>
+			<p>Step 1-8: 同様に，メール「part 8」の本文テキストすべてを，下のテキストエリアに貼り付けます (part 8のない号では空欄のまま)。</p>
+			<textarea name="body_8" cols="76" rows="6" class="part8"></textarea>
+		</div>
+		<div class="tabbertab">
+			<h3>Step 2: オプション</h3>
+			<h4>a. ePubファイルに表紙ページを付けるかどうかを選びます。</h4>
+			<select name="cover" size="1">
+				<option value="1" selected="selected" />表紙を付ける</option>
+				<option value="0" />表紙なし</option>
+			</select>
+			<h4>b. ePubファイルにSocialReading機能を追加するかどうかを選びます。</h4>
+			<select name="socialreading" size="1">
+				<option value="1" selected="selected" />SocialReading機能を追加する</option>
+				<option value="0" />SocialReading機能を追加しない</option>
+			</select>
+			<p>※本サービスでの「SocialReading機能」とは，メルマガの各章に用意される専用リンクを押すことで，Twitterへハッシュタグ <a href="http://twitter.com/#!/search?q=%23tsudamag">#tsudamag</a> 付きでアクセスするものです。書き込みもできます。</p>
+			<h4>c. ePubファイルを横組みにするか，縦組みにするかなどを選びます。</h4>
+			<select name="css" size="1">
+				<option value="yoko_1" selected="selected" />横書き・フォント指定なし</option>
+				<option value="yoko_2" />横書き・明朝体フォント</option>
+				<option value="tate_1" />縦書き・フォント指定なし</option>
+				<option value="tate_2" />縦書き・明朝体フォント</option>
+			</select>
+			<p>※ePubにセットするCSSファイルの選択になります。ここでの指定通りの表示が実際に可能かどうかは，各電子書籍リーダのCSS対応状況に依存します。</p>
+			<h4>d. Step 1で貼り付けたメルマガの号を選びます。基本的には「自動判別」のままでOKです。</h4>
+			<select name="type" size="1">
+				<option value="auto" selected="selected">本文テキストから自動判別</option>
+				<option value="tsuda_0">vol.0 創刊準備号</option>
+				<option value="tsuda_1">vol.1</option>
+				<option value="tsuda_2">vol.2</option>
+				<option value="tsuda_3">vol.3</option>
+				<option value="tsuda_4">vol.4</option>
+				<option value="tsuda_5">vol.5</option>
+				<option value="tsuda_6">vol.6</option>
+				<option value="tsuda_7">vol.7</option>
+				<option value="tsuda_8">vol.8</option>
+				<option value="tsuda_9">vol.9</option>
+				<option value="tsuda_10">vol.10</option>
+				<option value="tsuda_11">vol.11</option>
+				<option value="tsuda_12">vol.12</option>
+				<option value="tsuda_13">vol.13</option>
+				<option value="tsuda_14">vol.14 (章の検出が正確ではないが読むことはできる)</option>
+				<option value="tsuda_15">vol.15</option>
+				<option value="tsuda_16">vol.16</option>
+				<option value="tsuda_17">vol.17</option>
+				<option value="tsuda_18">vol.18</option>
+				<option value="tsuda_19">vol.19</option>
+				<option value="tsuda_20">vol.20</option>
+				<option value="tsuda_21">vol.21</option>
+				<option value="tsuda_tohoku1">東北取材特別増刊号その1</option>
+				<option value="tsuda_tohoku2">東北取材特別増刊号その2</option>
+				<option value="tsuda_22">vol.22</option>
+				<option value="tsuda_tohoku3">東北取材特別増刊号その3</option>
+				<option value="tsuda_23">vol.23</option>
+				<option value="tsuda_24">vol.24</option>
+				<option value="tsuda_25">vol.25</option>
+				<option value="tsuda_26">vol.26</option>
+				<option value="tsuda_27">vol.27</option>
+				<option value="tsuda_tohoku4">東北取材特別増刊号その4</option>
+				<option value="tsuda_28">vol.28</option>
+				<option value="tsuda_29">vol.29</option>
+				<option value="tsuda_30">vol.30 (動作未確認)</option>
+				<!--
+				<option value="tsuda_21">vol.31</option>
+				<option value="tsuda_22">vol.32</option>
+				<option value="tsuda_23">vol.33</option>
+				<option value="tsuda_24">vol.34</option>
+				<option value="tsuda_25">vol.35</option>
+				<option value="tsuda_26">vol.36</option>
+				<option value="tsuda_27">vol.37</option>
+				<option value="tsuda_28">vol.38</option>
+				<option value="tsuda_29">vol.39</option>
+				<option value="tsuda_30">vol.40</option>
+				-->
+			</select>
+		</div>
+		<div class="tabbertab">
+			<h3>Step 3: 実行</h3>
+			<p>下の送信ボタンを1回押して，5秒ほどお待ちくださいませ。変換サーバがePubファイルを生成し終えたら，ダウンロードが始まります。ダウンロード完了後，ePubファイルを電子書籍リーダで開いてみてください。</p>
+			<input type="submit" value="ePubファイルをダウンロードする" />
+			<h4>このページからパソコンでePubファイルをダウンロードして，スマートフォンで閲覧するためには？</h4>
+			<p>次の手段でePubファイルをスマホに持って行き，スマホ上のePubファイルをなんらかの電子書籍リーダアプリで開くとよいでしょう。<ol type="a"><li>メール経由: ePubファイルをメール添付で自分のスマホ宛に送信する</li><li>Dropbox経由: ePubファイルをDropbox領域に入れてスマホで開く</li><li>直接接続: パソコンとスマホを接続してePubファイルを転送する</li></ol></p>
+			<h4>このページからiPhone/iPadのMobile SafariでePubファイルをダウンロードして，即開くためには？</h4>
+			<p>あらかじめ，<a href="http://itunes.apple.com/jp/app/ibooks/id364709193">Apple純正のiBooks</a>などの電子書籍リーダアプリをiPhone/iPadにインストールしておく必要があるようです。</p>
+		</div>
+		<div class="tabbertab">
+			<h3>備考</h3>
+			<ul>
+				<li>サーバ側に送信されるメルマガデータは，サーバに蓄積されません。サーバのHDD上に作業ファイルを一時的に生成しますが，処理終了時に削除しています。</li>
+				<li>作者が購読済みの号でのみ，ほぼ問題のないePub変換を確認しています。最新号が配信された直後は，作者によるサービス側の調整が間に合っていないことがあり，変換結果が機械的でおかしかったり，中途半端な部分があるかと思いますが，ご了承ください。</li>
+			</ul>
+		</div>
+	</div>
+	</form>
+</div>
+
+<div class="tabbertab">
+	<h2>ソースコード</h2>
+	<div class="tabber" id="tabber_source">
+		<div class="tabbertab">
+			<h3>ダウンロード</h3>
+			<p>本サービスで使用しているPerlスクリプトとその他ファイルは次の通りです。それぞれのリンクをクリックすることで，実際のソースと処理内容を確認できます。</p>
+			<ol>
+				<li>CGIプログラム (Perlスクリプト): <a href="mail2epub.cgi">mail2epub.cgi</a></li>
+				<li>メルマガ定義ファイル: <a href="magazine.ini">magazine.ini</a></li>
+				<li>横組み用CSSファイル1: <a href="sample_yoko_default.css">sample_yoko_default.css</a></li>
+				<li>横組み用CSSファイル2: <a href="sample_yoko_mincho.css">sample_yoko_mincho.css</a></li>
+				<li>縦組み用CSSファイル1: <a href="sample_tate_default.css">sample_tate_default.css</a></li>
+				<li>縦組み用CSSファイル2: <a href="sample_tate_mincho.css">sample_tate_mincho.css</a></li>
+			</ol>
+			<p>ライセンス: This program is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
+		</div>
+		<div class="tabbertab">
+			<h3>更新履歴</h3>
+			<ul>
+				<li>変換プログラムver.20120215: h2で囲んでいた各章のページタイトルを，h1で囲むように修正した。(Thanks: <a href="http://orangeprose.blog.fc2.com/blog-entry-1.html">orangeProse | 津田マガvol.0をePubで読む（というかSigil0.5.2の使い方）</a>)</li>
+				<li>変換プログラムver.20120102: メルマガvol.17まぐまぐ版での8分割メールへの対応を行った。</li>
+				<li>変換プログラムver.20111124: メルマガvol.12まぐまぐ版での5分割メールへの対応を行った。</li>
+				<li>変換プログラムver.20111117: メルマガvol.11まぐまぐ版での4分割メールへの対応を行った。</li>
+				<li>変換プログラムver.20111111: 簡易的なSocialReading機能を実装した。これは，各章別の専用ハッシュタグを用意して，Twitter上で読書状況や感想をゆるく共有するもの。</li>
+				<li>変換プログラムver.20111109: 表紙 (cover) を自動生成してePubファイルに付けるようにした。</li>
+				<li>変換プログラムver.20111107: 後注 (endnote) の「注の印」と「注の内容」を相互にリンクするようにした。また，整形改行削除のアルゴリズムを改良した。</li>
+				<li>変換プログラムver.20111105b: ePubファイルにセットするCSSファイルを，「横組み／縦組み」「フォント指定なし／明朝体フォント」を組み合わせた4つの中から選択できるようにした。</li>
+				<li>変換プログラムver.20111105a: ePubファイルにセットするCSSファイルを，横組み用 or 縦組み用の2つから選択できるようにした。</li>
+				<li>変換プログラムver.20111105: メルマガvol.9に対応するためにmagazine.ini内の整形用パラメータを増設し，また，まぐまぐ版での3分割メールへの対応を行った。</li>
+				<li>変換プログラムver.20111031: 入力テキストを章ごとの複数のxhtmlファイルとして，ePubファイル内に格納するように改良した。</li>
+				<li>ウェブサービスver.20111031: タッチスクリーンの端末で使いやすいことを目指して，ページをリニューアルした。</li>
+				<li>変換プログラムver.20111030: 入力テキストを津田さんメルマガか否かを判定する部分を変更した。</li>
+				<li>ウェブサービスver.20111029: 変換速度向上のため，サービスの設置場所を自宅サーバ (remoteroom.dyndns.org) からレンタルサーバ (remoteroom.jp) へ変更した。変換待ち時間はおよそ10秒強→5秒以下へ短縮。</li>
+				<li>変換プログラムver.20111024: ePubファイルに書き出す属性に関して，設定ファイルとプログラム内に，機能していない無意味な部分があったので修正した。</li>
+				<li>変換プログラムver.20111023: part 1とpart 2に分かれた2部構成の号をePub変換した場合に，章の抽出や不要部分の削除にやや失敗していた不具合を修正した。</li>
+				<li>ウェブサービス・変換プログラムver.20111022: スクリプト版の拙作 <a href="http://remoteroom.jp/dokuwiki/%E5%AE%9F%E7%94%A8%E3%81%99%E3%81%8F%E3%82%8A%E3%81%B7%E3%81%A8%E3%82%93:mail2epub.pl">mail2epub.pl (Perl Script &amp; EXE)</a> を改造してCGIプログラムに変え，ウェブ版初版として公開した。</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<div class="tabbertab">
+	<h2>作者</h2>
+	<p>大久保 正彦と申します。個人サイト: <a href="http://remoteroom.jp/">remoteroom.jp</a>/<a href="http://remoteroom.jp/dokuwiki/%E8%87%AA%E5%B7%B1%E7%B4%B9%E4%BB%8B">自己紹介</a>，Twitter: <a href="http://twitter.com/mah_jp">@mah_jp</a>，メール: mah あっとまーく remoteroom.jp</p>
+	<p>ちなみに作者は，Androidの「Moon+ Reader Pro」という電子書籍リーダアプリとGalaxy Tab SC-01C・Xperia Proの組み合わせ，もしくはSONY Reader PRS-T1を使用して，“津田さんメルマガ”を読んでいます。気勢あるこの新しいメディアを，様々な読者がスマホなどで読み，未来にどう繋がっていくだろうか。そこに希望を感じています。</p>
+</div>
+
+</div><!-- /tabber_main -->
+
+</body>
+</html>
