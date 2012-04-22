@@ -23,7 +23,7 @@ use URI::Escape;
 
 my %program = (
 	name    => 'mail2epub.cgi',
-	version => 'ver.20120404',
+	version => 'ver.20120423',
 	url     => 'http://remoteroom.jp/mail2epub/'
 );
 my $configfile_magazine = 'magazine.ini';
@@ -153,10 +153,10 @@ sub make_epub {
 		$maxwidth = $$config_target{'unfold_maxwidth'};
 	}
 	$body = &unfold_text(\@body, $ref_width, $maxwidth, $$config_target{'unfold_margin_minus'}, $$config_target{'unfold_margin_plus'});
-	$body =~ s/"/&quot;/g;
+	$body =~ s/&/&amp;/g;
 	$body =~ s/</&lt;/g;
 	$body =~ s/>/&gt;/g;
-	$body =~ s/&/&amp;/g;
+	$body =~ s/"/&quot;/g;
 #	$body = &tagging_twitter($body);
 #	$body = &tagging_link($body);
 	my(@chapter, $ref_chapters, $ref_heading, $ref_toc, $toc);
