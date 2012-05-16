@@ -23,7 +23,7 @@ use URI::Escape;
 
 my %program = (
 	name    => 'mail2epub.cgi',
-	version => 'ver.20120423',
+	version => 'ver.20120516',
 	url     => 'http://remoteroom.jp/mail2epub/'
 );
 my $configfile_magazine = 'magazine.ini';
