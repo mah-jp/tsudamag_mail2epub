@@ -135,6 +135,7 @@ sub make_epub {
 	my $body;
 	if (defined($$config_target{'heading_line_regex'}) && ($$config_target{'heading_line_regex'} ne '')) {
 		utf8::decode($$config_target{'heading_line_regex'});
+		utf8::decode($$config_target{'heading_notline_regex'});
 		utf8::decode($$config_target{'heading_start_regex'});
 		$body = $body_1 . "\n" . 
 			&cut_header($body_2, $$config_target{'heading_start_regex'}, $$config_target{'heading_start_part2'}) . "\n" . 
@@ -161,7 +162,7 @@ sub make_epub {
 #	$body = &tagging_link($body);
 	my(@chapter, $ref_chapters, $ref_heading, $ref_toc, $toc);
 	if (defined($$config_target{'heading_line_regex'}) && ($$config_target{'heading_line_regex'} ne '')) {
-		($ref_chapters, $ref_heading, $ref_toc) = &split_chapter(\$body, $$config_target{'heading_line_regex'}, $$config_target{'heading_start_regex'}, $$config_target{'heading_start_part1'});
+		($ref_chapters, $ref_heading, $ref_toc) = &split_chapter(\$body, $$config_target{'heading_line_regex'}, $$config_target{'heading_start_regex'}, $$config_target{'heading_start_part1'}, $$config_target{'heading_notline_regex'});
 		$toc = '<ul><li>' . join('</li><li>', @$ref_toc) . '</li></ul>';
 		my $ref_chapter = [ map { $_ } @$ref_chapters ];
 		my @ref_chapter = @$ref_chapter;
@@ -497,9 +498,9 @@ sub tagging_twitter {
 }
 
 sub split_chapter {
-	my($ref_text, $heading_line_regex, $heading_start_regex, $heading_start_part) = @_;
+	my($ref_text, $heading_line_regex, $heading_start_regex, $heading_start_part, $heading_notline_regex) = @_;
 	my @text = split("\n", $$ref_text);
-	my($i, $line, $name, @result, @toc, @chapter);
+	my($i, $line, $name, @result, @toc, @chapter, $notline);
 	my($scanning) = 0;
 	my($part) = 0;
 	my($chapter_no) = 0;
@@ -509,14 +510,22 @@ sub split_chapter {
 	}
 	for ($i = 0; $i < scalar(@text); $i++) {
 		$line = $text[$i];
+		$notline = 0;
 		if ($scanning == 1) {
+			if (($heading_notline_regex ne '') && ($line =~ /$heading_notline_regex/o)) {
+				$notline = 1;
+			}
 			if (($line =~ /$heading_line_regex/o) && ($text[$i - 1] eq '')) {
-				$chapter_no ++;
-				$chapter_line = 0;
-				$name = sprintf('mail2epub-line%d', $i + 1); # id
-				$chapter[$chapter_no][$chapter_line] = sprintf('<h1 id="%s"><a href="%s">%s</a></h1><!-- tag_socialreading_short -->', $name, 'chapter_0.xhtml', $line);
-				push(@result, [ $line, sprintf('chapter_%d.xhtml', $chapter_no) ]);
-				push(@toc, sprintf('<a href="chapter_%d.xhtml">%s</a>', $chapter_no, $line));
+				if ($notline == 0) {
+					$chapter_no ++;
+					$chapter_line = 0;
+					$name = sprintf('mail2epub-line%d', $i + 1); # id
+					$chapter[$chapter_no][$chapter_line] = sprintf('<h1 id="%s"><a href="%s">%s</a></h1><!-- tag_socialreading_short -->', $name, 'chapter_0.xhtml', $line);
+					push(@result, [ $line, sprintf('chapter_%d.xhtml', $chapter_no) ]);
+					push(@toc, sprintf('<a href="chapter_%d.xhtml">%s</a>', $chapter_no, $line));
+				} else {
+					$chapter[$chapter_no][$chapter_line] = $line;
+				}
 			} else {
 				$chapter[$chapter_no][$chapter_line] = $line;
 			}
