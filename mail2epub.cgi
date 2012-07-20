@@ -23,7 +23,7 @@ use URI::Escape;
 
 my %program = (
 	name    => 'mail2epub.cgi',
-	version => 'ver.20120516',
+	version => 'ver.20120721',
 	url     => 'http://remoteroom.jp/mail2epub/'
 );
 my $configfile_magazine = 'magazine.ini';
@@ -77,6 +77,7 @@ my $config_target_default = $config_magazine->param(-block=>$magazine_type_defau
 my $flag_tsuda = 0;
 my $flag_cover = $query->param('cover');
 my $flag_socialreading = $query->param('socialreading');
+my $flag_mailmagcontents = $query->param('mailmagcontents');
 my $magazine_type = $query->param('type');
 my $magazine_vol;
 if ($magazine_type eq 'auto') {
@@ -116,7 +117,7 @@ if (defined($css_str{$query->param('css')})) {
 	$css_str = $css_str{'yoko_1'};
 }
 # main
-my($packfile, $file) = &make_epub($tmpdir, $flag_tsuda, $flag_cover, $flag_socialreading, $magazine_vol, $config_target, $css_file, $css_str, \%program, $body_1, $body_2, $body_3, $body_4, $body_5, $body_6, $body_7, $body_8);
+my($packfile, $file) = &make_epub($tmpdir, $flag_tsuda, $flag_cover, $flag_socialreading, $flag_mailmagcontents, $magazine_vol, $config_target, $css_file, $css_str, \%program, $body_1, $body_2, $body_3, $body_4, $body_5, $body_6, $body_7, $body_8);
 &download_epub($packfile, $file);
 exit;
 
@@ -130,7 +131,7 @@ sub download_epub {
 }
 
 sub make_epub {
-	my($tmpdir, $flag_tsuda, $flag_cover, $flag_socialreading, $magazine_vol, $config_target, $css_file, $css_str, $ref_program, $body_1, $body_2, $body_3, $body_4, $body_5, $body_6, $body_7, $body_8) = @_;
+	my($tmpdir, $flag_tsuda, $flag_cover, $flag_socialreading, $flag_mailmagcontents, $magazine_vol, $config_target, $css_file, $css_str, $ref_program, $body_1, $body_2, $body_3, $body_4, $body_5, $body_6, $body_7, $body_8) = @_;
 	# body and toc
 	my $body;
 	if (defined($$config_target{'heading_line_regex'}) && ($$config_target{'heading_line_regex'} ne '')) {
@@ -172,7 +173,11 @@ sub make_epub {
 	}
 	my($i);
 	for ( $i = 0; $i < scalar(@chapter); $i++) {
-		$chapter[$i] = &tagging_link(&tagging_twitter($chapter[$i]));
+		if ($flag_mailmagcontents) {
+			$chapter[$i] = &tagging_link(&tagging_mailmagcontents(&tagging_twitter($chapter[$i]), $$config_target{'mailmagcontents_regex'}));
+		} else {
+			$chapter[$i] = &tagging_link(&tagging_twitter($chapter[$i]));
+		}
 	}
 	# endnote
 	if (defined($$config_target{'endnote_regex'}) && ($$config_target{'endnote_regex'} ne '')) {
@@ -489,6 +494,12 @@ sub match_endlink {
 #	}
 #	return($result);
 #}
+
+sub tagging_mailmagcontents {
+	my($text, $mailmagcontents_regex) = @_;
+	$text =~ s|$mailmagcontents_regex|$1<br /><img src="$1" class="mail2epub-mailmagcontents" alt="$1" />|g;
+	return($text);
+}
 
 sub tagging_twitter {
 	my($text) = @_;

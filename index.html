@@ -90,8 +90,9 @@ function deleteCookie(name, path, domain) {
 		<dt>最近の更新内容</dt>
 			<dd>
 				<ul>
+					<li>津田さんメルマガの提供画像URLを、EPUB内でimgタグに変換する機能を追加しました (画像取込はしないので表示にはオンライン環境が必要)。vol.31,34,37,39で動作確認済み。 [2012/07/21]</li>
 					<li>津田さんメルマガvol.39のEPUB変換に問題ないことを確認しました。 [2012/07/20]</li>
-					<li>津田さんメルマガ東北取材特別増刊号その4に仮対応しました。 [2012/04/04]</li>
+					<!-- <li>津田さんメルマガ東北取材特別増刊号その4に仮対応しました。 [2012/04/04]</li> -->
 				</ul>
 			</dd>
 		<dt>他のテキスト・コンテンツ、プレーンテキストをEPUB変換したい</dt>
@@ -176,7 +177,13 @@ function deleteCookie(name, path, domain) {
 				<option value="tate_2" />縦書き・明朝体フォント</option>
 			</select>
 			<p>※ePubにセットするCSSファイルの選択になります。ここでの指定通りの表示が実際に可能かどうかは、各電子書籍リーダのCSS対応状況に依存します。</p>
-			<h4>d. Step 1で貼り付けたメルマガの号を選びます。基本的には「自動判別」のままでOKです。</h4>
+			<h4>d. 津田マガ提供の画像URLをimgタグに変換するかどうかを選びます。</h4>
+			<select name="mailmagcontents" size="1">
+				<option value="1" selected="selected" />imgタグに変換する</option>
+				<option value="0" />imgタグに変換せずそのまま</option>
+			</select>
+			<p>※ePubファイルへの画像の同梱は行いません。ePub閲覧時に画像を表示させるためにはオンライン環境が必要です。</p>
+			<h4>e. Step 1で貼り付けたメルマガの号を選びます。基本的には「自動判別」のままでOKです。</h4>
 			<select name="type" size="1">
 				<option value="auto" selected="selected">本文テキストから自動判別</option>
 				<option value="tsuda_0">vol.0 創刊準備号</option>
@@ -277,6 +284,7 @@ function deleteCookie(name, path, domain) {
 		<div class="tabbertab">
 			<h3>更新履歴</h3>
 			<ul>
+				<li>変換プログラムver.20120721: メルマガ提供の画像URLを、imgタグに変換する機能を追加した。</li>
 				<li>変換プログラムver.20120516: メルマガvol.14とvol.32の章見出し抽出が正しく行えるように調整した。</li>
 				<li>ウェブサービスver.20120422: ソースを<a href="https://github.com/mah-jp/tsudamag_mail2epub">https://github.com/mah-jp/tsudamag_mail2epub</a>に置くようにした。</li>
 				<li>変換プログラムver.20120404: メルマガvol.23〜vol.27の章見出し抽出が正しく行えるように調整した。</li>

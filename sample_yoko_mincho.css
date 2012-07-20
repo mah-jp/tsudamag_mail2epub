@@ -9,6 +9,9 @@ body {
 img.mail2epub-cover {
 	height: 100%;
 }
+img.mail2epub-mailmagcontents {
+	width: 100%;
+}
 /*
 dl.mail2epub-toc {
 }
