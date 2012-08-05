@@ -23,7 +23,7 @@ use URI::Escape;
 
 my %program = (
 	name    => 'mail2epub.cgi',
-	version => 'ver.20120721',
+	version => 'ver.20120805',
 	url     => 'http://remoteroom.jp/mail2epub/'
 );
 my $configfile_magazine = 'magazine.ini';
@@ -87,10 +87,14 @@ if ($magazine_type eq 'auto') {
 	if ($body_1 =~ /$body_key_regex/os) {
 #		$magazine_type = 'tsuda_' . $1;
 #		$magazine_vol = $1;
-		$magazine_type = 'tsuda_' . $2 . $3;
-		$magazine_vol = $2 . $3;
+		$magazine_type = 'tsuda_' . $2 . $3 . $4;
+		$magazine_vol = $2 . $3 . $4;
 		$flag_tsuda = 1;
-		$magazine_type =~ s/東北取材特別増刊号その/tohoku/;
+		if ($magazine_type =~ /東北取材特別増刊号その/) {
+			$magazine_type =~ s/東北取材特別増刊号その/tohoku/;
+		} elsif ($magazine_type =~ /「アメリカ西海岸で働く日本人」その/) {
+			$magazine_type =~ s/「アメリカ西海岸で働く日本人」その/westcoast/;
+		}
 	} else {
 		$magazine_type = $magazine_type_default;
 	}
@@ -349,6 +353,8 @@ sub make_cover {
 	my @fontsize;
 	if ($title[2] =~ /東北取材特別増刊号/) {
 		@fontsize = (  24,  38,  26,  12);
+	} elsif ($title[2] =~ /「アメリカ西海岸で働く日本人」/) {
+		@fontsize = (  24,  38,  19,  12);
 	} else {
 		@fontsize = (  24,  38,  72,  12);
 	};
