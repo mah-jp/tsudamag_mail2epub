@@ -11,4 +11,4 @@ tsudamag_mail2epub: Mail-Magazine to EPUB Converting Web Service (Perl). Availab
 Version
 -------
 
-ver.20120516
+ver.20120805
