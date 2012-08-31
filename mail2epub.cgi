@@ -162,7 +162,7 @@ sub make_epub {
 	$body =~ s/&/&amp;/g;
 	$body =~ s/</&lt;/g;
 	$body =~ s/>/&gt;/g;
-	$body =~ s/"/&quot;/g;
+	$body =~ s/"/&quot;/g;	# " <-dummy
 #	$body = &tagging_twitter($body);
 #	$body = &tagging_link($body);
 	my(@chapter, $ref_chapters, $ref_heading, $ref_toc, $toc);
